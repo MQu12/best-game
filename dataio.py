@@ -1,5 +1,6 @@
 from typing import List
 import pandas as pd
+from os.path import exists
 
 RATINGS_FNAME = "game_ratings.csv"
 GAME_LIST_FNAME = "game_list.txt"
@@ -117,6 +118,17 @@ def write_top_10(ratings: pd.DataFrame):
         for i, game in enumerate(ratings.iloc[0:10]["game"].tolist()):
             comparisons = int(ratings[ratings["game"] == game].iloc[0]["n_comparisons"])
             f.write(f"{i+1}. {game} ({comparisons})\n")
+
+
+def init_files():
+
+    if not exists(METADATA_FNAME):
+        metadata = pd.Series([0.0], index=["n_comparisons"])
+        save_metadata(metadata)
+
+    if not exists(RATINGS_FNAME):
+        ratings = pd.DataFrame(columns=["game", "rating", "n_comparisons"])
+        save_ratings(ratings)
 
 
 if __name__ == "__main__":

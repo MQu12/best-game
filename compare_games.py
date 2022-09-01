@@ -178,6 +178,7 @@ def do_comparison() -> bool:
 
 
 def main():
+    dataio.init_files()
     dataio.update_ratings_dataframe()
     while do_comparison():
         continue
