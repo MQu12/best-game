@@ -121,6 +121,8 @@ def write_top_10(ratings: pd.DataFrame):
 
 
 def init_files():
+    """Intialise files on first load
+    """
 
     if not exists(METADATA_FNAME):
         metadata = pd.Series([0.0], index=["n_comparisons"])
