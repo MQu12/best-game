@@ -1,2 +1,4 @@
-*.txt
-*.csv
+top10.txt
+metadata.txt
+game_ratings.csv
+__pycache__
